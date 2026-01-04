@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS was meant for people, not just websites</title>
+    <meta name="description" content="Why we accepted the decline of personal identity on the web, and how we can fix it.">
+    <style>
+        :root {
+            --bg-color: #fffcf9;
+            --text-color: #222;
+            --link-color: #0056b3;
+            --accent-color: #333;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", serif;
+            --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --text-color: #e0e0e0;
+                --link-color: #64b5f6;
+                --accent-color: #a0a0a0;
+            }
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        h2, h3 {
+            margin-top: 2.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        .highlight {
+            background-color: rgba(255, 255, 0, 0.15);
+            padding: 0 4px;
+            border-radius: 3px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .highlight {
+                background-color: rgba(255, 255, 0, 0.1);
+            }
+        }
+
+        code {
+            font-family: var(--font-mono);
+            background: rgba(127, 127, 127, 0.1);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent-color);
+            margin: 1.5rem 0;
+            padding-left: 1rem;
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--accent-color);
+            opacity: 0.3;
+            margin: 3rem 0;
+        }
+
+        .cta-box {
+            border: 2px solid var(--text-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.8rem 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1rem;
+            transition: transform 0.1s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>DNS was meant for people, not just websites</h1>
+        <div class="meta">January 2026 • 4 min read</div>
+    </header>
+
+    <main>
+        <p>In the early architecture of the web, the Domain Name System (DNS) was designed to be the great translator. It was the layer that turned the rigid, numerical reality of IP addresses into human-readable language.</p>
+
+        <p>Somewhere along the way, however, we accepted a strange shift in how we utilize this naming system. We implicitly decided that top-level domains were for companies, organizations, and servers—while humans belonged in the sub-directories of massive providers.</p>
+
+        <p>We stopped being nodes on the network and started becoming tenants.</p>
+
+        <h3>The Great Depletion</h3>
+        
+        <p>If you have a common name, you know exactly what this centralization looks like. You try to register your identity on a major provider, and the namespace is exhausted.</p>
+
+        <p>You aren’t <code>firstname.lastname</code>. You are <code>firstname.lastname.8842</code>. You are <code>lastname.dev.99</code>.</p>
+
+        <p>Newcomers to the internet are landing with increasingly ridiculous local-part email addresses, forced to append birth years or random strings just to find an available slot in the database of a tech giant. We have normalized the idea that our digital identity must be a sub-account of a corporation.</p>
+
+        <p>It feels like a glitch in the Matrix. Why are we treating <code>@gmail.com</code> or <code>@outlook.com</code> as the default setting for humanity?</p>
+
+        <h3>The "Sovereign Identity" Friction</h3>
+
+        <p>The obvious answer—and the one usually shouted by purists—is: <em>"Just buy your own domain."</em></p>
+
+        <p>Ideally, the modern internet should be focused around <code>@myself</code>. The protocol allows it. The infrastructure supports it. But the User Experience (UX) has been actively hostile for two decades.</p>
+
+        <p>I know this because eight years ago, I tried to leave the walled garden. I bought a domain and set up my own mail server. I work in IT; I figured I could handle a Linux box and some DNS records.</p>
+
+        <p><strong>It was a nightmare.</strong></p>
+
+        <p>It wasn't the setup; it was the maintenance. It was the deliverability. It was waking up to find my IP range blacklisted because a neighbor on the same VPS provider sent spam. It was fighting with DKIM signatures, SPF alignments, and DMARC policies just to ensure an email to my mother didn't land in her Junk folder.</p>
+
+        <p>Eventually, I caved. I moved my custom domain to a large enterprise workspace. I paid a monthly subscription per user just to have my email work reliably. I was paying the landlord for the privilege of using my own name.</p>
+
+        <h3>Fixing the Layer</h3>
+
+        <p>This friction is why we are still using provider-based identities. We need a middle ground between "Technical masochism of self-hosting" and "Surrendering your identity to a free provider."</p>
+
+        <p>So, my two co-founders and I built that middle ground.</p>
+
+        <p>We are a small team (one product expert, two tech experts) who believe strongly in "privacy per default" and sovereign identity for everyone, not just sysadmins.</p>
+
+        <p>We built <a href="https://happymail.tech">Happymail</a>.</p>
+
+        <p>We wanted to return to the original promise of DNS—giving people their own names—but stripping away the operational toil.</p>
+
+        <p>We built a system where:</p>
+        <ul>
+            <li><strong>Identity comes first:</strong> You search for an available address using your name (or whatever keyword defines you).</li>
+            <li><strong>Infrastructure is invisible:</strong> We handle the DNS, the reputation warming, the DKIM/SPF complexities, and the hosting.</li>
+            <li><strong>Privacy is structural:</strong> We are hosted in France under strict GDPR compliance. We don't read emails for ads. We don't even store your password (we set the initial state, and you change it).</li>
+        </ul>
+
+        <h3>The Doomsday Protocol</h3>
+
+        <p>The skepticism of the technical community is usually: <em>"What if you shut down?"</em> It’s a valid fear. When you buy into a smaller SaaS, you worry about longevity.</p>
+
+        <p>We implemented a <strong>"Doomsday Plan."</strong> We keep a specific reserve of funds in a locked account. If Happymail ever has to cease operations, that fund triggers a guaranteed 1-year operational window, with new signups disabled, specifically to allow users to export their data and migrate their domains elsewhere.</p>
+
+        <h3>Taking Back the Name</h3>
+
+        <p>We are currently live. We are still building our migration tool (for importing old inboxes), but the core service is rock solid. It works with Outlook, Thunderbird, Spark, or whatever client you prefer.</p>
+
+        <p>The goal isn't just to sell a service. It's to shift the norm. It is to make <code>@firstname-lastname.com</code> as accessible as a generic free account.</p>
+
+        <div class="cta-box">
+            <p><strong>If you are tired of being User #8842, come check us out.</strong></p>
+            <a href="https://happymail.tech" class="cta-button">Visit Happymail.tech</a>
+        </div>
+    </main>
+
+    <hr>
+
+    <footer style="text-align: center; font-size: 0.8rem; color: #888;">
+        <p>&copy; 2026 Happymail. Built in France.</p>
+    </footer>
+
+</body>
+</html>
